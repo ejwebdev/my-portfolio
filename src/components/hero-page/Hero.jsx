@@ -1,5 +1,5 @@
 import { useTypewriter, Cursor } from "react-simple-typewriter";
-import heroImg from "../../assets/hero-img.png";
+import heroImg from "../../assets/hero-img.webp";
 import "./hero.css";
 
 function Hero() {
@@ -42,7 +42,7 @@ function Hero() {
                 </div>
                 <img
                     src={heroImg}
-                    alt="Eventify Home Image"
+                    alt="Enrico Jay Home Image"
                     draggable="false"
                 />
             </div>
