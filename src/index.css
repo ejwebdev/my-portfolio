@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    @apply w-[8px];
+}
+::-webkit-scrollbar-track {
+    @apply bg-priBG;
+}
+::-webkit-scrollbar-thumb {
+    @apply bg-[#808080];
+}
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#757575];
+}
+
+/* outline outline-1 outline-red-400 */
+* {
+    @apply m-0 p-0 box-border;
+}
+body {
+    @apply bg-priBG text-secText font-priFont;
+}
+p {
+    @apply text-sm;
+}
+li {
+    @apply list-none;
+}
+a {
+    @apply block no-underline text-sm transition-colors duration-200 ease-out;
+}
+h1 {
+    @apply font-bold font-secFont text-secBold text-[2rem] sm:text-[2.5rem] md:text-[3rem];
+}
+h2 {
+    @apply font-bold font-secFont text-secBold text-[1.5rem] sm:text-[1.75rem] md:text-[2rem];
+}
+h3 {
+    @apply flex items-center gap-x-[10px] font-semibold font-secFont text-priColor;
+}
+button {
+    @apply flex items-center gap-x-[10px] font-semibold font-secFont text-sm py-[10px] px-[25px] rounded-[25px] text-secBold bg-priColor border border-solid border-priColor shadow-lg cursor-pointer transition-colors duration-200 ease-out hover:bg-[#3E6E7C] hover:border-[#3E6E7C] active:opacity-90;
+}

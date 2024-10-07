@@ -1,0 +1,22 @@
+.footer {
+    @apply pb-[50px];
+}
+.footer-cntnr {
+    @apply flex flex-col gap-y-[30px] w-priWidth mx-auto;
+}
+.footer-cntnr > hr {
+    @apply border-[#1e1e1e];
+}
+.footer-cntnr > div {
+    @apply flex flex-col-reverse gap-y-[30px] items-center;
+    @apply md:flex-row md:justify-between;
+}
+.footer-cntnr > div > p {
+    @apply text-[#808080];
+}
+.footer-cntnr > div > ul {
+    @apply flex gap-x-[50px];
+}
+.footer-cntnr > div > ul > li > a {
+    @apply text-[#808080] hover:text-secBold;
+}

@@ -1,0 +1,21 @@
+.home {
+    @apply flex items-end w-full min-h-screen bg-priBG;
+}
+.home-cntnr {
+    @apply flex flex-col w-priWidth mx-auto mt-[110px];
+    @apply xl:mt-[70px] xl:flex-row xl:justify-between xl:items-center;
+}
+.home-left {
+    @apply w-terWidth flex flex-col gap-y-[10px];
+    @apply xl:w-[47.5%];
+}
+.home-left > p {
+    @apply mt-[10px];
+}
+.home-left > button {
+    @apply mt-[20px] mr-auto;
+}
+.home-cntnr > img {
+    @apply w-terWidth h-auto ml-auto;
+    @apply xl:ml-0 xl:w-[47.5%];
+}

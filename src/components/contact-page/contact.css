@@ -1,0 +1,15 @@
+.contact {
+    @apply py-[100px];
+}
+.contact-cntnr {
+    @apply flex flex-col text-center gap-y-[10px] w-priWidth mx-auto;
+}
+.contact-cntnr > h3 {
+    @apply justify-center;
+}
+.contact-cntnr > p {
+    @apply w-secWidth mx-auto;
+}
+.contact-cntnr > button {
+    @apply mt-[20px] mx-auto;
+}

@@ -1,0 +1,34 @@
+.header {
+    @apply flex justify-center fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ease-out;
+}
+.nav {
+    @apply flex justify-between items-center h-[70px] w-priWidth;
+}
+.nav > img {
+    @apply size-[30px] cursor-pointer;
+}
+.nav > ul {
+    @apply absolute flex flex-col w-full top-[70px] gap-y-[30px] py-[30px] bg-priBG transition-all duration-300 ease-out;
+    @apply md:static md:flex-row md:w-auto md:h-full md:top-auto md:gap-x-[50px] md:py-0 md:bg-inherit md:left-auto;
+}
+.nav > ul > li {
+    @apply relative w-priWidth mx-auto;
+    @apply md:w-auto md:flex md:h-full;
+}
+.nav > ul > li a {
+    @apply flex items-center gap-x-[5px] text-secText hover:text-priColor;
+}
+.nav > ul > .header-socials {
+    @apply flex md:hidden gap-x-[20px] w-priWidth mx-auto;
+}
+.nav > div {
+    @apply hidden md:flex gap-x-[20px];
+}
+.nav > ul > .header-socials > img,
+.nav > div > img {
+    @apply size-[20px] transition-transform duration-300 ease-out cursor-pointer hover:scale-[1.15];
+}
+.nav > span {
+    @apply text-[30px] text-secBold;
+    @apply md:hidden;
+}
