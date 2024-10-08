@@ -61,8 +61,10 @@ function About() {
                     <p>
                         I&apos;m <span>Enrico Jay Sison</span>, a fresh graduate
                         with two years of hands-on experience in web development
-                        and design. I enjoy going to the gym and have a passion
-                        for music, serving as a musician in my church.
+                        and design. Aside from programming, I enjoy going to the
+                        gym and pursue my passion for music as a musician,
+                        finding balance between fitness, creativity, and
+                        technology.
                     </p>
                     <ul>
                         {aboutTech.map((aboutTech, index) => (

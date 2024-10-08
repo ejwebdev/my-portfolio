@@ -61,7 +61,9 @@ function Header() {
     return (
         <header
             className={`header ${
-                isScrolled ? "bg-black bg-opacity-80" : "bg-transparent"
+                isScrolled
+                    ? "bg-black bg-opacity-80 backdrop-blur-md"
+                    : "bg-transparent"
             }`}
         >
             <nav className="nav">
