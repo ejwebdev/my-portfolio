@@ -2,8 +2,8 @@
     @apply flex items-end w-full min-h-screen bg-priBG;
 }
 .home-cntnr {
-    @apply flex flex-col w-priWidth mx-auto mt-[110px];
-    @apply xl:mt-[70px] xl:flex-row xl:justify-between xl:items-center;
+    @apply flex flex-col w-priWidth mx-auto mt-[120px];
+    @apply xl:mt-[80px] xl:flex-row xl:justify-between xl:items-center;
 }
 .home-left {
     @apply w-terWidth flex flex-col gap-y-[10px];
