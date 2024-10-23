@@ -1,6 +1,4 @@
 import aboutImg from "../../assets/about-img.png";
-import htmlIcon from "../../assets/html.svg";
-import cssIcon from "../../assets/css.svg";
 import tailwindIcon from "../../assets/tailwind.svg";
 import javascriptIcon from "../../assets/javascript.svg";
 import bootstrapIcon from "../../assets/bootstrap.svg";
@@ -16,12 +14,10 @@ import resume from "../../assets/resume.pdf";
 import "./about.css";
 
 const aboutTech = [
-    { tech: htmlIcon, title: "HTML" },
-    { tech: cssIcon, title: "CSS" },
     { tech: tailwindIcon, title: "Tailwind" },
     { tech: javascriptIcon, title: "JavaScript" },
     { tech: bootstrapIcon, title: "Bootstrap" },
-    { tech: reactIcon, title: "React" },
+    { tech: reactIcon, title: "React JS" },
     { tech: nodejsIcon, title: "Node.js" },
     { tech: gitIcon, title: "Git" },
     { tech: githubIcon, title: "GitHub" },
