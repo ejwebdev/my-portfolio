@@ -1,3 +1,6 @@
+import { motion, useAnimation } from "framer-motion";
+import { useIntersectionObserver } from "../../hooks/Observer.jsx";
+import { useEffect } from "react";
 import aboutImg from "../../assets/about-img.png";
 import tailwindIcon from "../../assets/tailwind.svg";
 import javascriptIcon from "../../assets/javascript.svg";
@@ -28,6 +31,32 @@ const aboutTech = [
 ];
 
 function About() {
+    // Animation Controls
+    const controls = useAnimation();
+    const { ref, isVisible } = useIntersectionObserver(0.25);
+
+    useEffect(() => {
+        if (isVisible) {
+            controls.start("visible");
+        }
+    }, [isVisible, controls]);
+
+    // Animation Variants
+    const cntnrVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.3,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    };
+
     // Auto Download Resume
     const resumeClick = () => {
         const link = document.createElement("a");
@@ -39,30 +68,36 @@ function About() {
     };
 
     return (
-        <section className="about" id="about">
-            <div className="about-cntnr">
-                <img
+        <section className="about" id="about" ref={ref}>
+            <motion.div
+                className="about-cntnr"
+                variants={cntnrVariants}
+                initial="hidden"
+                animate={controls}
+            >
+                <motion.img
                     src={aboutImg}
                     alt="Enrico Jay About Image"
                     draggable="false"
+                    variants={itemVariants}
                 />
                 <div className="about-right">
-                    <h3>
+                    <motion.h3 variants={itemVariants}>
                         <span className="material-symbols-rounded">
                             line_end
                         </span>
                         About Me
-                    </h3>
-                    <h2>Who Am I?</h2>
-                    <p>
+                    </motion.h3>
+                    <motion.h2 variants={itemVariants}>Who Am I?</motion.h2>
+                    <motion.p variants={itemVariants}>
                         I&apos;m <span>Enrico Jay Sison</span>, a fresh graduate
                         with two years of hands-on experience in web development
                         and design. Aside from programming, I enjoy going to the
                         gym and pursue my passion for music as a musician,
                         finding balance between fitness, creativity, and
                         technology.
-                    </p>
-                    <ul>
+                    </motion.p>
+                    <motion.ul variants={itemVariants}>
                         {aboutTech.map((aboutTech, index) => (
                             <li key={index}>
                                 <img
@@ -73,15 +108,18 @@ function About() {
                                 {aboutTech.title}
                             </li>
                         ))}
-                    </ul>
-                    <button onClick={resumeClick}>
+                    </motion.ul>
+                    <motion.button
+                        onClick={resumeClick}
+                        variants={itemVariants}
+                    >
                         <span className="material-symbols-rounded">
                             cloud_download
                         </span>
                         Resume
-                    </button>
+                    </motion.button>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }

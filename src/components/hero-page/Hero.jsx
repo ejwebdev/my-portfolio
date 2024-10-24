@@ -1,12 +1,41 @@
+import { motion, useAnimation } from "framer-motion";
+import { useIntersectionObserver } from "../../hooks/Observer.jsx";
+import { useEffect } from "react";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import heroImg from "../../assets/hero-img.webp";
 import "./hero.css";
 
 function Hero() {
+    // Animation Controls
+    const controls = useAnimation();
+    const { ref, isVisible } = useIntersectionObserver(0.25);
+
+    useEffect(() => {
+        if (isVisible) {
+            controls.start("visible");
+        }
+    }, [isVisible, controls]);
+
+    // Animation Variants
+    const cntnrVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.3,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    };
+
     // Typewriter
     const [text] = useTypewriter({
         words: ["Front-End Developer", "UI/UX Designer", "Freelance Developer"],
-        loop: [],
+        loop: true,
         typeSpeed: 120,
         deleteSpeed: 80,
         delaySpeed: 3000,
@@ -17,11 +46,18 @@ function Hero() {
     };
 
     return (
-        <section className="home" id="home">
-            <div className="home-cntnr">
+        <section className="home" id="home" ref={ref}>
+            <motion.div
+                className="home-cntnr"
+                variants={cntnrVariants}
+                initial="hidden"
+                animate={controls}
+            >
                 <div className="home-left">
-                    <h1>Hi, I&apos;m Enrico Jay</h1>
-                    <h3>
+                    <motion.h1 variants={itemVariants}>
+                        Hi, I&apos;m Enrico Jay
+                    </motion.h1>
+                    <motion.h3 variants={itemVariants}>
                         <span className="material-symbols-rounded">
                             line_end
                         </span>
@@ -29,23 +65,27 @@ function Hero() {
                             {text}
                             <Cursor />
                         </span>
-                    </h3>
-                    <p>
+                    </motion.h3>
+                    <motion.p variants={itemVariants}>
                         I build modern, responsive websites that blend
                         creativity and functionality. Let&apos;s transform your
                         vision into reality. Let&apos;s talk today!
-                    </p>
-                    <button onClick={bookMeeting}>
+                    </motion.p>
+                    <motion.button
+                        onClick={bookMeeting}
+                        variants={itemVariants}
+                    >
                         <span className="material-symbols-rounded">group</span>
                         Talk to Me
-                    </button>
+                    </motion.button>
                 </div>
-                <img
+                <motion.img
                     src={heroImg}
                     alt="Enrico Jay Home Image"
                     draggable="false"
+                    variants={itemVariants}
                 />
-            </div>
+            </motion.div>
         </section>
     );
 }

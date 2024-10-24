@@ -1,3 +1,6 @@
+import { motion, useAnimation } from "framer-motion";
+import { useIntersectionObserver } from "../../hooks/Observer.jsx";
+import { useEffect } from "react";
 import project1 from "../../assets/project1.jpg";
 import project2 from "../../assets/project2.jpg";
 import project3 from "../../assets/project3.jpg";
@@ -12,7 +15,7 @@ const projects = [
         link: "https://ejwebdev.github.io/meows-sweet-bites/",
         title: "Meow's Sweet Bites",
         desc: "A website for a local business cakery and flower shop, developed and designed in collaboration with a client, to showcase her products and special offers.",
-        tech: ["React", "React-Router", "Tailwind", "Git"],
+        tech: ["React", "React-Router", "Tailwind", "Git", "Google Analytics"],
     },
     {
         img: project2,
@@ -52,21 +55,52 @@ const projects = [
 ];
 
 function Projects() {
+    // Animation Controls
+    const controls = useAnimation();
+    const { ref, isVisible } = useIntersectionObserver(0.25);
+
+    useEffect(() => {
+        if (isVisible) {
+            controls.start("visible");
+        }
+    }, [isVisible, controls]);
+
+    // Animation Variants
+    const cntnrVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.3,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    };
+
     const projectDetails = (link) => {
         window.open(link, "_blank", "noopener,noreferrer");
     };
 
     return (
-        <section className="projects" id="projects">
-            <div className="projects-cntnr">
-                <h3>
+        <section className="projects" id="projects" ref={ref}>
+            <motion.div
+                className="projects-cntnr"
+                variants={cntnrVariants}
+                initial="hidden"
+                animate={controls}
+            >
+                <motion.h3 variants={itemVariants}>
                     <span className="material-symbols-rounded">line_end</span>
                     Projects
-                </h3>
-                <h2>Featured Projects</h2>
+                </motion.h3>
+                <motion.h2 variants={itemVariants}>Featured Projects</motion.h2>
                 <div className="projects-grid">
                     {projects.map((projects, index) => (
-                        <div key={index}>
+                        <motion.div key={index} variants={itemVariants}>
                             <img
                                 src={projects.img}
                                 alt="Enrico Jay Projects"
@@ -82,10 +116,10 @@ function Projects() {
                                     <li key={techIndex}>{tech}</li>
                                 ))}
                             </ul>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }
