@@ -1,18 +1,10 @@
-import { motion, useAnimation } from "framer-motion";
-import { useIntersectionObserver } from "../../hooks/Observer.jsx";
-import { useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import "./contact.css";
 
 function Contact() {
-    // Animation Controls
-    const controls = useAnimation();
-    const { ref, isVisible } = useIntersectionObserver(0.25);
-
-    useEffect(() => {
-        if (isVisible) {
-            controls.start("visible");
-        }
-    }, [isVisible, controls]);
+    const ref = useRef();
+    const inView = useInView(ref, { once: true });
 
     // Animation Variants
     const cntnrVariants = {
@@ -35,12 +27,13 @@ function Contact() {
     };
 
     return (
-        <section className="contact" id="contact" ref={ref}>
+        <section className="contact" id="contact">
             <motion.div
                 className="contact-cntnr"
+                ref={ref}
                 variants={cntnrVariants}
                 initial="hidden"
-                animate={controls}
+                animate={inView ? "visible" : "hidden"}
             >
                 <motion.h3 variants={itemVariants}>
                     <span className="material-symbols-rounded">line_end</span>

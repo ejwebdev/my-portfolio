@@ -1,6 +1,5 @@
-import { motion, useAnimation } from "framer-motion";
-import { useIntersectionObserver } from "../../hooks/Observer.jsx";
-import { useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import aboutImg from "../../assets/about-img.png";
 import tailwindIcon from "../../assets/tailwind.svg";
 import javascriptIcon from "../../assets/javascript.svg";
@@ -31,15 +30,8 @@ const aboutTech = [
 ];
 
 function About() {
-    // Animation Controls
-    const controls = useAnimation();
-    const { ref, isVisible } = useIntersectionObserver(0.25);
-
-    useEffect(() => {
-        if (isVisible) {
-            controls.start("visible");
-        }
-    }, [isVisible, controls]);
+    const ref = useRef();
+    const inView = useInView(ref, { once: true });
 
     // Animation Variants
     const cntnrVariants = {
@@ -68,12 +60,13 @@ function About() {
     };
 
     return (
-        <section className="about" id="about" ref={ref}>
+        <section className="about" id="about">
             <motion.div
                 className="about-cntnr"
+                ref={ref}
                 variants={cntnrVariants}
                 initial="hidden"
-                animate={controls}
+                animate={inView ? "visible" : "hidden"}
             >
                 <motion.img
                     src={aboutImg}

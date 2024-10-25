@@ -1,5 +1,5 @@
-import { motion, useAnimation } from "framer-motion";
-import { useIntersectionObserver } from "../../hooks/Observer.jsx";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { useState, useEffect } from "react";
 import navLogo from "/my-logo.png";
 import facebook from "../../assets/facebook.svg";
@@ -8,15 +8,8 @@ import github from "../../assets/github-nav.svg";
 import "./header.css";
 
 function Header() {
-    // Animation Controls
-    const controls = useAnimation();
-    const { ref, isVisible } = useIntersectionObserver(0.25);
-
-    useEffect(() => {
-        if (isVisible) {
-            controls.start("visible");
-        }
-    }, [isVisible, controls]);
+    const ref = useRef();
+    const inView = useInView(ref, { once: true });
 
     // Animation Variants
     const cntnrVariants = {
@@ -93,13 +86,13 @@ function Header() {
                     ? "bg-black bg-opacity-80 backdrop-blur-md"
                     : "bg-transparent"
             }`}
-            ref={ref}
         >
             <motion.nav
                 className="nav"
+                ref={ref}
                 variants={cntnrVariants}
                 initial="hidden"
-                animate={controls}
+                animate={inView ? "visible" : "hidden"}
             >
                 <motion.img
                     src={navLogo}

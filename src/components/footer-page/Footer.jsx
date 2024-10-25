@@ -1,18 +1,10 @@
-import { motion, useAnimation } from "framer-motion";
-import { useIntersectionObserver } from "../../hooks/Observer.jsx";
-import { useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import "./footer.css";
 
 function Footer() {
-    // Animation Controls
-    const controls = useAnimation();
-    const { ref, isVisible } = useIntersectionObserver(0.25);
-
-    useEffect(() => {
-        if (isVisible) {
-            controls.start("visible");
-        }
-    }, [isVisible, controls]);
+    const ref = useRef();
+    const inView = useInView(ref, { once: true });
 
     // Animation Variants
     const cntnrVariants = {
@@ -31,12 +23,13 @@ function Footer() {
     };
 
     return (
-        <section className="footer" ref={ref}>
+        <section className="footer">
             <motion.div
                 className="footer-cntnr"
+                ref={ref}
                 variants={cntnrVariants}
                 initial="hidden"
-                animate={controls}
+                animate={inView ? "visible" : "hidden"}
             >
                 <hr />
                 <div>
