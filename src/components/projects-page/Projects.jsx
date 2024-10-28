@@ -41,7 +41,7 @@ const projects = [
         img: project5,
         link: "https://ejwebdev.github.io/taskdash/",
         title: "TaskDash",
-        desc: "A real-time task manager app developed and designed as a project for my internship, which allows users to efficiently add, edit, and delete tasks, as well as view recent tasks from other users.",
+        desc: "A real-time task manager app developed and designed as a personal project, enabling users to efficiently add, edit, and delete tasks, as well as view recent tasks from other users.",
         tech: ["React", "React-Router", "Tailwind", "Firebase", "Git"],
     },
     {
