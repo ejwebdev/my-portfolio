@@ -20,7 +20,7 @@
     @apply mt-[20px] flex flex-wrap gap-[10px];
 }
 .about-right > ul > li {
-    @apply flex items-center gap-x-[7.5px] text-xs bg-secBG shadow-lg py-[5px] px-[15px] rounded-[25px];
+    @apply flex items-center gap-x-[7.5px] text-xs bg-[#1e1e1e] shadow-lg py-[5px] px-[15px] rounded-[25px];
 }
 .about-right > ul > li > img {
     @apply size-[20px];

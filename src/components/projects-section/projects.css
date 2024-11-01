@@ -21,5 +21,5 @@
     @apply mt-[10px] flex flex-wrap gap-[10px];
 }
 .projects-grid-tech > li {
-    @apply text-xs bg-[#4d4d4d] py-[5px] px-[15px] rounded-[25px];
+    @apply text-xs bg-[#3c3c3c] py-[5px] px-[15px] rounded-[25px];
 }

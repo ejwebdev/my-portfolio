@@ -18,7 +18,7 @@ export default {
             },
             backgroundColor: {
                 priBG: "#111111",
-                secBG: "#1e1e1e",
+                secBG: "#181818",
             },
             width: {
                 priWidth: "clamp(200px, 90vw, 1200px)",

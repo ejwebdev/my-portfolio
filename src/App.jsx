@@ -1,9 +1,9 @@
-import Default from "./pages/Default.jsx";
+import Main from "./pages/Main.jsx";
 
 function App() {
     return (
         <>
-            <Default />
+            <Main />
         </>
     );
 }
