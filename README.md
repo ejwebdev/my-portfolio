@@ -7,7 +7,7 @@ Discover the portfolio of Enrico Jay Sison, a web developer and designer creatin
 ## Features
 
 -   Responsive design
--   Contact form
+-   Simple Animations
 
 ## Technologies Used
 
