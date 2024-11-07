@@ -26,7 +26,7 @@ function Hero() {
 
     // Typewriter
     const [text] = useTypewriter({
-        words: ["Front-End Developer", "UI/UX Designer", "Freelance Developer"],
+        words: ["Web Developer", "UI/UX Designer"],
         loop: true,
         typeSpeed: 120,
         deleteSpeed: 80,
